@@ -1,0 +1,65 @@
+on:
+  release:
+    types: 
+      - published
+
+jobs:
+  build-converter:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        GOOS: [windows]
+        GOARCH: [amd64]
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-go@v3
+        with:
+         cache: true
+         cache-dependency-path: converter/go.sum
+         go-version-file: converter/go.mod
+
+      - name: Set up workspace
+        run: go work init converter/
+
+      - name: Build converter
+        run: |
+          export GOOS=${{ matrix.GOOS }}
+          export GOARCH=${{ matrix.GOARCH }}
+          go build -ldflags "-s -w" -o build/ github.com/novelcraft/minecraftlevelexporter
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: converter-${{ matrix.GOOS }}-${{ matrix.GOARCH }}
+          path: build
+
+  upload-bundle-to-release:
+    needs:
+      - build-converter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@v3
+        with:
+          path: dist/converter/
+
+      - name: Copy essential files
+        run: |
+          mkdir -p dist/assets/
+          cp -r assets/* dist/assets/
+          mkdir -p dist/exporter/
+          cp -r exporter/* dist/exporter/
+
+      - name: Pack bundle
+        run: |
+          cd dist
+          zip -9r ../bundle.zip *
+          cd ..
+
+      - name: Upload bundle to release
+        uses: softprops/action-gh-release@v1
+        with:
+          append_body: true
+          files: |
+            bundle.zip    

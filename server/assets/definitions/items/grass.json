@@ -1,0 +1,12 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "grass",
+        "type_id": 2
+    },
+    "components": {
+        "block_placer": {
+            "block_type_id": 2
+        }
+    }
+}

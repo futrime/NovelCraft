@@ -1,0 +1,12 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "stone_sword",
+        "type_id": 13
+    },
+    "components": {
+        "weapon": {
+            "damage": 5
+        }
+    }
+}

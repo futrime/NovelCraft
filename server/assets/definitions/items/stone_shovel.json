@@ -1,0 +1,24 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "stone_shovel",
+        "type_id": 14
+    },
+    "components": {
+        "digger": {
+            "destroy_speeds": [
+                {
+                    "block_type_id": 2,
+                    "speed_multiplier": 3.60
+                },
+                {
+                    "block_type_id": 3,
+                    "speed_multiplier": 3.75
+                }
+            ]
+        },
+        "weapon": {
+            "damage": 2
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "type": "block",
+    "description": {
+        "identifier": "unknown",
+        "type_id": -2
+    },
+    "components": {
+        "collision_box": {},
+        "friction": 0.4
+    }
+}

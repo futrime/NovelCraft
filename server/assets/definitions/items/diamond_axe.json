@@ -1,0 +1,24 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "diamond_axe",
+        "type_id": 35
+    },
+    "components": {
+        "digger": {
+            "destroy_speeds": [
+                {
+                    "block_type_id": 5,
+                    "speed_multiplier": 7.50
+                },
+                {
+                    "block_type_id": 17,
+                    "speed_multiplier": 7.50
+                }
+            ]
+        },
+        "weapon": {
+            "damage": 5
+        }
+    }
+}

@@ -1,0 +1,125 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "bound_to": {
+            "type": "integer",
+            "const": 1
+        },
+        "type": {
+            "type": "integer",
+            "const": 300
+        },
+        "entities": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "orientation": {
+                        "type": "object",
+                        "properties": {
+                            "yaw": {
+                                "type": "number",
+                                "exclusiveMininum": -180,
+                                "maximum": 360
+                            },
+                            "pitch": {
+                                "type": "number",
+                                "mininum": -90,
+                                "maximum": 90
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                            "yaw",
+                            "pitch"
+                        ]
+                    },
+                    "position": {
+                        "type": "object",
+                        "properties": {
+                            "x": {
+                                "type": "number"
+                            },
+                            "y": {
+                                "type": "number"
+                            },
+                            "z": {
+                                "type": "number"
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                            "x",
+                            "y",
+                            "z"
+                        ]
+                    },
+                    "type_id": {
+                        "type": "integer"
+                    },
+                    "unique_id": {
+                        "type": "integer"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "orientation",
+                    "position",
+                    "type_id",
+                    "unique_id"
+                ]
+            }
+        },
+        "sections": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "blocks": {
+                        "description": "The blocks in the section which can be accessed by `blocks[x*256+y*16+z]`",
+                        "type": "array",
+                        "items": {
+                            "description": "The block ID",
+                            "type": "integer"
+                        },
+                        "minItems": 4096,
+                        "maxItems": 4096
+                    },
+                    "position": {
+                        "description": "The position of the block whose coordinates are (0, 0, 0) in the section.",
+                        "type": "object",
+                        "properties": {
+                            "x": {
+                                "type": "integer"
+                            },
+                            "y": {
+                                "type": "integer"
+                            },
+                            "z": {
+                                "type": "integer"
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                            "x",
+                            "y",
+                            "z"
+                        ]
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "blocks",
+                    "position"
+                ]
+            }
+        }
+    },
+    "required": [
+        "bound_to",
+        "type",
+        "entities",
+        "sections"
+    ]
+}

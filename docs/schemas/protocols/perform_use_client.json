@@ -1,0 +1,32 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "bound_to": {
+            "type": "integer",
+            "const": 0
+        },
+        "type": {
+            "type": "integer",
+            "const": 510
+        },
+        "token": {
+            "type": "integer"
+        },
+        "use_kind": {
+            "description": "0 - click, 1 - hold start, 2 - hold end",
+            "type": "integer",
+            "enum": [
+                0,
+                1,
+                2
+            ]
+        }
+    },
+    "required": [
+        "bound_to",
+        "type",
+        "token",
+        "use_kind"
+    ]
+}

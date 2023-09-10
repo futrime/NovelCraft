@@ -1,0 +1,14 @@
+{
+    "type": "block",
+    "description": {
+        "identifier": "iron_ore",
+        "type_id": 15
+    },
+    "components": {
+        "collision_box": {},
+        "destructible_by_mining": {
+            "seconds_to_destroy": 15
+        },
+        "friction": 0.4
+    }
+}

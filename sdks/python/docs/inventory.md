@@ -1,0 +1,3 @@
+# IInventory
+
+::: inventory.IInventory

@@ -1,0 +1,24 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "wooden_axe",
+        "type_id": 12
+    },
+    "components": {
+        "digger": {
+            "destroy_speeds": [
+                {
+                    "block_type_id": 5,
+                    "speed_multiplier": 2.00
+                },
+                {
+                    "block_type_id": 7,
+                    "speed_multiplier": 2.00
+                }
+            ]
+        },
+        "weapon": {
+            "damage": 3
+        }
+    }
+}

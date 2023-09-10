@@ -1,0 +1,78 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "type",
+        "records"
+    ],
+    "properties": {
+        "type": {
+            "const": "record"
+        },
+        "records": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "type",
+                    "identifier",
+                    "tick",
+                    "data"
+                ],
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "const": "event"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "const": "after_entity_change_orientation"
+                    },
+                    "tick": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "change_list"
+                        ],
+                        "properties": {
+                            "change_list": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "unique_id",
+                                        "orientation"
+                                    ],
+                                    "properties": {
+                                        "unique_id": {
+                                            "type": "integer"
+                                        },
+                                        "orientation": {
+                                            "type": "object",
+                                            "required": [
+                                                "yaw",
+                                                "pitch"
+                                            ],
+                                            "properties": {
+                                                "yaw": {
+                                                    "type": "number"
+                                                },
+                                                "pitch": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "type": "block",
+    "description": {
+        "identifier": "gold_ore",
+        "type_id": 14
+    },
+    "components": {
+        "collision_box": {},
+        "destructible_by_mining": {
+            "seconds_to_destroy": 15
+        },
+        "friction": 0.4
+    }
+}

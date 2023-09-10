@@ -1,0 +1,14 @@
+{
+    "type": "block",
+    "description": {
+        "identifier": "cobblestone",
+        "type_id": 4
+    },
+    "components": {
+        "collision_box": {},
+        "destructible_by_mining": {
+            "seconds_to_destroy": 10
+        },
+        "friction": 0.4
+    }
+}

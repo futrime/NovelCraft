@@ -1,0 +1,34 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "bound_to": {
+            "type": "integer",
+            "const": 0
+        },
+        "type": {
+            "type": "integer",
+            "const": 508
+        },
+        "token": {
+            "type": "integer"
+        },
+        "slot_a": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 35
+        },
+        "slot_b": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 35
+        }
+    },
+    "required": [
+        "bound_to",
+        "type",
+        "token",
+        "slot_a",
+        "slot_b"
+    ]
+}

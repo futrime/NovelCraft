@@ -1,0 +1,120 @@
+on:
+  release:
+    types: 
+      - published
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        targetPlatform:
+          - StandaloneLinux64
+          - StandaloneOSX
+          - StandaloneWindows64
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+
+      - uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-${{ matrix.targetPlatform }}
+          restore-keys: Library-
+
+      - uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          buildMethod: CustomBuilderAction.Builder.BuildProject
+          buildName: Client
+          targetPlatform: ${{ matrix.targetPlatform }}
+          unityVersion: 2021.3.23f1
+          versioning: Tag
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
+
+  upload-to-release:
+    needs: 
+      - build
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - targetPlatform: StandaloneLinux64
+          - targetPlatform: StandaloneOSX
+          - targetPlatform: StandaloneWindows64
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: ${{ matrix.targetPlatform }}
+          path: artifact
+
+      - name: Copy essential files
+        run: |
+          cp CHANGELOG.md LICENSE README.md artifact/
+
+      - name: Pack artifacts (Windows)
+        if: ${{ matrix.targetPlatform == 'StandaloneWindows64'}}
+        run: |
+          cd artifact
+          zip -9r ../novelcraft-client-${{ matrix.targetPlatform }}.zip *
+          cd ..
+
+      - name: Pack artifacts (Others)
+        if: ${{ matrix.targetPlatform != 'StandaloneWindows64' }}
+        run: |
+          cd artifact
+          tar -zcf ../novelcraft-client-${{ matrix.targetPlatform }}.tar.gz *
+          cd ..
+
+      - name: Upload artifacts to release (Windows)
+        if: ${{ matrix.targetPlatform == 'StandaloneWindows64' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          append_body: true
+          files: |
+            novelcraft-client-${{ matrix.targetPlatform }}.zip
+      
+      - name: Upload artifacts to release (Others)
+        if: ${{ matrix.targetPlatform != 'StandaloneWindows64' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          append_body: true
+          files: |
+            novelcraft-client-${{ matrix.targetPlatform }}.tar.gz
+
+  upload-bundle-to-release:
+    needs: 
+      - build
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          path: artifacts
+
+      - name: Pack artifacts
+        run: |
+          cd artifacts
+          zip -9r ../bundle.zip *
+          cd ..
+
+      - name: Upload artifacts to release
+        uses: softprops/action-gh-release@v1
+        with:
+          append_body: true
+          files: |
+            bundle.zip

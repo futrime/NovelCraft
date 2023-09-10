@@ -1,0 +1,22 @@
+{
+    "type": "loot_table",
+    "description": {
+        "type": "block",
+        "block_or_entity_type_id": 4
+    },
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "weight": 1,
+                    "item_type_id": 4
+                }
+            ]
+        }
+    ],
+    "only_loot_by": [
+        11,
+        15
+    ]
+}

@@ -1,0 +1,99 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "bound_to": {
+            "type": "integer",
+            "const": 1
+        },
+        "type": {
+            "type": "integer",
+            "const": 301
+        },
+        "health": {
+            "type": "number",
+            "minimum": 0
+        },
+        "inventory": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 64
+                    },
+                    "type_id": {
+                        "type": "integer"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "count",
+                    "type_id"
+                ]
+            },
+            "minItems": 36,
+            "maxItems": 36
+        },
+        "main_hand": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 8
+        },
+        "orientation": {
+            "type": "object",
+            "properties": {
+                "yaw": {
+                    "type": "number",
+                    "exclusiveMininum": -180,
+                    "maximum": 360
+                },
+                "pitch": {
+                    "type": "number",
+                    "mininum": -90,
+                    "maximum": 90
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "yaw",
+                "pitch"
+            ]
+        },
+        "position": {
+            "type": "object",
+            "properties": {
+                "x": {
+                    "type": "number"
+                },
+                "y": {
+                    "type": "number"
+                },
+                "z": {
+                    "type": "number"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "x",
+                "y",
+                "z"
+            ]
+        },
+        "unique_id": {
+            "type": "integer"
+        }
+    },
+    "required": [
+        "bound_to",
+        "type",
+        "health",
+        "inventory",
+        "main_hand",
+        "orientation",
+        "position",
+        "unique_id"
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "type": "block",
+    "description": {
+        "identifier": "bedrock",
+        "type_id": 7
+    },
+    "components": {
+        "collision_box": {},
+        "friction": 0.4
+    }
+}

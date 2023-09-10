@@ -1,0 +1,10 @@
+{
+    "server_port": 14514,
+    "level_name": "A",
+    "ticks_per_second": 20,
+    "save_level": false,
+    "save_record": true,
+    "player_spawn_max_y": 96,
+    "waiting_time": 0,
+    "max_tick": null
+}

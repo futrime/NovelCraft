@@ -1,0 +1,12 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "dirt",
+        "type_id": 3
+    },
+    "components": {
+        "block_placer": {
+            "block_type_id": 3
+        }
+    }
+}

@@ -1,0 +1,2 @@
+cd "E:\Github desktop storage\Client\Assets\Plugins"
+mklink /d /j Sdk "../../Submodules/SDK-DotNet/src"

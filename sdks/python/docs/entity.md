@@ -1,0 +1,3 @@
+# IEntity
+
+::: entity.IEntity

@@ -1,0 +1,12 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "golden_sword",
+        "type_id": 28
+    },
+    "components": {
+        "weapon": {
+            "damage": 4
+        }
+    }
+}

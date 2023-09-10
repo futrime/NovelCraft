@@ -1,0 +1,12 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "planks",
+        "type_id": 5
+    },
+    "components": {
+        "block_placer": {
+            "block_type_id": 5
+        }
+    }
+}

@@ -1,0 +1,34 @@
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build-converter:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        GOOS: [windows]
+        GOARCH: [amd64]
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-go@v3
+        with:
+         cache: true
+         cache-dependency-path: converter/go.sum
+         go-version-file: converter/go.mod
+
+      - name: Set up workspace
+        run: go work init converter/
+
+      - name: Build converter
+        run: |
+          export GOOS=${{ matrix.GOOS }}
+          export GOARCH=${{ matrix.GOARCH }}
+          go build -ldflags "-s -w" -o build/ github.com/novelcraft/minecraftlevelexporter
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: converter-${{ matrix.GOOS }}-${{ matrix.GOARCH }}
+          path: build

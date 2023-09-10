@@ -1,0 +1,82 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "type",
+        "records"
+    ],
+    "properties": {
+        "type": {
+            "const": "record"
+        },
+        "records": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "type",
+                    "identifier",
+                    "tick",
+                    "data"
+                ],
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "const": "event"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "const": "after_block_change"
+                    },
+                    "tick": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "change_list"
+                        ],
+                        "properties": {
+                            "change_list": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "position",
+                                        "block_type_id"
+                                    ],
+                                    "properties": {
+                                        "position": {
+                                            "type": "object",
+                                            "required": [
+                                                "x",
+                                                "y",
+                                                "z"
+                                            ],
+                                            "properties": {
+                                                "x": {
+                                                    "type": "integer"
+                                                },
+                                                "y": {
+                                                    "type": "integer"
+                                                },
+                                                "z": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "block_type_id": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

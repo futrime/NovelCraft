@@ -1,0 +1,57 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "bound_to": {
+            "type": "integer",
+            "const": 1
+        },
+        "type": {
+            "type": "integer",
+            "const": 409
+        },
+        "change_list": {
+            "description": "List of changed slots",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "description": "Number of items in the slot after the change",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 64
+                    },
+                    "item_type_id": {
+                        "oneOf": [
+                            {
+                                "description": "Item type ID of the item in the slot after the change",
+                                "type": "integer"
+                            },
+                            {
+                                "description": "Null if the slot is empty after the change",
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "slot": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 35
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "count",
+                    "item_type_id",
+                    "slot"
+                ]
+            }
+        }
+    },
+    "required": [
+        "bound_to",
+        "type",
+        "change_list"
+    ]
+}

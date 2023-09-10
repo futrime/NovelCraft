@@ -1,0 +1,13 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "apple",
+        "type_id": 8
+    },
+    "components": {
+        "food": {
+            "can_always_eat": false,
+            "nutrition": 4
+        }
+    }
+}

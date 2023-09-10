@@ -1,0 +1,3 @@
+# ILogger
+
+::: logger.ILogger

@@ -1,0 +1,12 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "iron_sword",
+        "type_id": 24
+    },
+    "components": {
+        "weapon": {
+            "damage": 6
+        }
+    }
+}

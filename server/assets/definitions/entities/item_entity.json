@@ -1,0 +1,15 @@
+{
+    "type": "entity",
+    "description": {
+        "identifier": "item_entity",
+        "type_id": 1
+    },
+    "components": {
+        "physics": {},
+        "collision_box": {
+            "width": 0.0,
+            "height": 0.0,
+            "eye_height": 0.0
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "bound_to": {
+            "type": "integer",
+            "const": 1
+        },
+        "type": {
+            "type": "integer",
+            "const": 401
+        },
+        "attack_list": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "attacker_unique_id": {
+                        "type": "integer"
+                    },
+                    "kind": {
+                        "type": "integer",
+                        "enum": [
+                            0,
+                            1,
+                            2
+                        ]
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "attacker_unique_id",
+                    "kind"
+                ]
+            }
+        }
+    },
+    "required": [
+        "bound_to",
+        "type",
+        "attack_list"
+    ]
+}

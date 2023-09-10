@@ -1,0 +1,75 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "type",
+        "records"
+    ],
+    "properties": {
+        "type": {
+            "const": "record"
+        },
+        "records": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "type",
+                    "identifier",
+                    "tick",
+                    "data"
+                ],
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "const": "event"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "const": "after_entity_place_block"
+                    },
+                    "tick": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "entity_unique_id",
+                            "block_type_id",
+                            "block_position"
+                        ],
+                        "properties": {
+                            "entity_unique_id": {
+                                "type": "integer"
+                            },
+                            "block_type_id": {
+                                "type": "integer"
+                            },
+                            "block_position": {
+                                "type": "object",
+                                "required": [
+                                    "x",
+                                    "y",
+                                    "z"
+                                ],
+                                "properties": {
+                                    "x": {
+                                        "type": "integer"
+                                    },
+                                    "y": {
+                                        "type": "integer"
+                                    },
+                                    "z": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

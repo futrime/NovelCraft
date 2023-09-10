@@ -1,0 +1,14 @@
+{
+    "type": "block",
+    "description": {
+        "identifier": "log",
+        "type_id": 17
+    },
+    "components": {
+        "collision_box": {},
+        "destructible_by_mining": {
+            "seconds_to_destroy": 3
+        },
+        "friction": 0.4
+    }
+}

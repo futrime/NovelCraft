@@ -1,0 +1,23 @@
+{
+    "minecraft:unknown": -2,
+    "minecraft:barrier": -1,
+    "minecraft:air": 0,
+    "minecraft:stone": 1,
+    "minecraft:deepslate": 1,
+    "minecraft:grass": 2,
+    "minecraft:dirt": 3,
+    "minecraft:cobblestone": 4,
+    "minecraft:planks": 5,
+    "minecraft:sapling": 6,
+    "minecraft:bedrock": 7,
+    "minecraft:gold_ore": 14,
+    "minecraft:deepslate_gold_ore": 14,
+    "minecraft:iron_ore": 15,
+    "minecraft:deepslate_iron_ore": 15,
+    "minecraft:coal_ore": 16,
+    "minecraft:deepslate_coal_ore": 16,
+    "minecraft:log": 17,
+    "minecraft:leaves": 18,
+    "minecraft:diamond_ore": 56,
+    "minecraft:deepslate_diamond_ore": 56
+}

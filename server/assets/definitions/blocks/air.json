@@ -1,0 +1,8 @@
+{
+    "type": "block",
+    "description": {
+        "identifier": "air",
+        "type_id": 0
+    },
+    "components": {}
+}

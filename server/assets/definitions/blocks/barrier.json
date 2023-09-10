@@ -1,0 +1,11 @@
+{
+    "type": "block",
+    "description": {
+        "identifier": "barrier",
+        "type_id": -1
+    },
+    "components": {
+        "collision_box": {},
+        "friction": 0.4
+    }
+}

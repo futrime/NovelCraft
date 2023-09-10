@@ -1,0 +1,27 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "bound_to": {
+            "type": "integer",
+            "const": 1
+        },
+        "type": {
+            "type": "integer",
+            "const": 302
+        },
+        "tick": {
+            "type": "integer"
+        },
+        "ticks_per_second": {
+            "type": "number",
+            "minimum": 0
+        }
+    },
+    "required": [
+        "bound_to",
+        "type",
+        "tick",
+        "ticks_per_second"
+    ]
+}

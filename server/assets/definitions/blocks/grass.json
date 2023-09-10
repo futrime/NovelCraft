@@ -1,0 +1,14 @@
+{
+    "type": "block",
+    "description": {
+        "identifier": "grass",
+        "type_id": 2
+    },
+    "components": {
+        "collision_box": {},
+        "destructible_by_mining": {
+            "seconds_to_destroy": 0.9
+        },
+        "friction": 0.4
+    }
+}

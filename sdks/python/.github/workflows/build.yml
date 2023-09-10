@@ -1,0 +1,41 @@
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+jobs:
+  generate-documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - uses: Gr1N/setup-poetry@v8
+
+      - name: Install dependencies for building docs
+        run: poetry install --with docs
+
+      - name: Build documentation
+        run: poetry run mkdocs build
+
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: site
+      
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    if: github.ref_name == 'main'
+    needs: generate-documentation
+    permissions:
+      id-token: write
+      pages: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy the pages
+        id: deployment
+        uses: actions/deploy-pages@v2

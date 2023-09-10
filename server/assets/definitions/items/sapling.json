@@ -1,0 +1,12 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "sapling",
+        "type_id": 36
+    },
+    "components": {
+        "block_placer": {
+            "block_type_id": 6
+        }
+    }
+}

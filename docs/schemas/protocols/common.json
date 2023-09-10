@@ -1,0 +1,50 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "description": "This schema describes the common format for all packets.",
+    "type": "object",
+    "properties": {
+        "bound_to": {
+            "description": "The direction of the packet. 0 = client to server, 1 = server to client",
+            "type": "integer",
+            "enum": [
+                0,
+                1
+            ]
+        },
+        "type": {
+            "type": "integer",
+            "enum": [
+                100,
+                200,
+                300,
+                301,
+                302,
+                400,
+                401,
+                402,
+                403,
+                404,
+                405,
+                406,
+                407,
+                408,
+                409,
+                500,
+                501,
+                502,
+                503,
+                504,
+                505,
+                506,
+                507,
+                508,
+                509,
+                510
+            ]
+        }
+    },
+    "required": [
+        "bound_to",
+        "type"
+    ]
+}

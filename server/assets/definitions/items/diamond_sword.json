@@ -1,0 +1,12 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "diamond_sword",
+        "type_id": 32
+    },
+    "components": {
+        "weapon": {
+            "damage": 7
+        }
+    }
+}

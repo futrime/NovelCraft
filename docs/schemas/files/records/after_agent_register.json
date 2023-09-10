@@ -1,0 +1,70 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "type",
+        "records"
+    ],
+    "properties": {
+        "type": {
+            "const": "record"
+        },
+        "records": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "type",
+                    "identifier",
+                    "tick",
+                    "data"
+                ],
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "const": "event"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "const": "after_agent_register"
+                    },
+                    "tick": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "data": {
+                        "type": "object",
+                        "required": [
+                            "agent_list"
+                        ],
+                        "properties": {
+                            "agent_list": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "token": {
+                                            "type": "string"
+                                        },
+                                        "unique_id": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "required": [
+                                        "name",
+                                        "token",
+                                        "unique_id"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

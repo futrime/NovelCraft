@@ -1,0 +1,37 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "bound_to": {
+            "type": "integer",
+            "const": 0
+        },
+        "type": {
+            "type": "integer",
+            "const": 501
+        },
+        "token": {
+            "type": "integer"
+        },
+        "item_id_sequence": {
+            "type": "array",
+            "items": {
+                "oneOf": [
+                    {
+                        "type": "integer"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
+            },
+            "minItems": 1
+        }
+    },
+    "required": [
+        "bound_to",
+        "type",
+        "token",
+        "item_id_sequence"
+    ]
+}

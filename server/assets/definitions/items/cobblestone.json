@@ -1,0 +1,12 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "cobblestone",
+        "type_id": 4
+    },
+    "components": {
+        "block_placer": {
+            "block_type_id": 4
+        }
+    }
+}

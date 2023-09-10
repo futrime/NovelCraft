@@ -1,0 +1,22 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "bound_to": {
+            "type": "integer",
+            "const": 0
+        },
+        "type": {
+            "type": "integer",
+            "const": 100
+        },
+        "sent_time": {
+            "type": "number"
+        }
+    },
+    "required": [
+        "bound_to",
+        "type",
+        "sent_time"
+    ]
+}

@@ -1,0 +1,165 @@
+on:
+  release:
+    types: 
+      - published
+
+env:
+  VERSION: 0.0.0
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        runtime:
+          - linux-arm
+          - linux-arm64
+          - linux-x64
+          - linux-musl-arm
+          - linux-musl-arm64
+          - linux-musl-x64
+          - osx-arm64
+          - osx-x64
+          - win-arm
+          - win-arm64
+          - win-x64
+          - win-x86
+        include:
+          - runs-on: ubuntu-latest
+          - runs-on: macos-latest
+            runtime: osx-x64
+          - runs-on: macos-latest
+            runtime: osx-arm64
+    runs-on: ${{ matrix.runs-on }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Build
+        run: |
+          dotnet publish src/Server.csproj -c Release -o build --sc false -r ${{ matrix.runtime }} \
+          -p:DebugType=none -p:PublishSingleFile=true
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.runtime }}
+          path: build
+
+  upload-to-release:
+    needs: 
+      - build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        runtime:
+          - linux-arm
+          - linux-arm64
+          - linux-x64
+          - linux-musl-arm
+          - linux-musl-arm64
+          - linux-musl-x64
+          - osx-arm64
+          - osx-x64
+          - win-arm
+          - win-arm64
+          - win-x64
+          - win-x86
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: ${{ matrix.runtime }}
+          path: artifact
+
+      - name: Copy essential files
+        run: |
+          cp CHANGELOG.md LICENSE README.md artifact/
+          cp -r assets/* artifact/
+
+      - name: Pack artifacts (Windows)
+        if: ${{ startsWith(matrix.runtime, 'win-') }}
+        run: |
+          cd artifact
+          zip -9r ../novelcraft-server-${{ matrix.runtime }}.zip *
+          cd ..
+
+      - name: Pack artifacts (Others)
+        if: ${{ !startsWith(matrix.runtime, 'win-') }}
+        run: |
+          cd artifact
+          tar -zcf ../novelcraft-server-${{ matrix.runtime }}.tar.gz *
+          cd ..
+
+      - name: Upload artifacts to release (Windows)
+        if: ${{ startsWith(matrix.runtime, 'win-') }}
+        uses: softprops/action-gh-release@v1
+        with:
+          append_body: true
+          files: |
+            novelcraft-server-${{ matrix.runtime }}.zip
+      
+      - name: Upload artifacts to release (Others)
+        if: ${{ !startsWith(matrix.runtime, 'win-') }}
+        uses: softprops/action-gh-release@v1
+        with:
+          append_body: true
+          files: |
+            novelcraft-server-${{ matrix.runtime }}.tar.gz
+
+  upload-bundle-to-release:
+    needs: 
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          path: artifacts
+
+      - name: Pack artifacts
+        run: |
+          cd artifacts
+          zip -9r ../bundle.zip *
+          cd ..
+
+      - name: Upload artifacts to release
+        uses: softprops/action-gh-release@v1
+        with:
+          append_body: true
+          files: |
+            bundle.zip
+
+  docker-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trim prefix v from version
+        run: |
+          echo "VERSION=${{ github.ref_name }}" | sed 's/=v/=/' >> $GITHUB_ENV
+
+      - uses: actions/checkout@v3
+
+      - uses: docker/setup-qemu-action@v2
+
+      - uses: docker/setup-buildx-action@v2
+
+      - uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Publish Docker image (prerelease)
+        uses: docker/build-push-action@v4
+        if: ${{ github.event.release.prerelease }}
+        with:
+          push: true
+          tags: futrime/novelcraft.server:${{ env.VERSION }}
+
+      - name: Publish Docker image (release)
+        uses: docker/build-push-action@v4
+        if: ${{ !github.event.release.prerelease }}
+        with:
+          no-cache: true
+          push: true
+          tags: futrime/novelcraft.server:${{ env.VERSION }},futrime/novelcraft.server:latest

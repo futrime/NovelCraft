@@ -1,0 +1,12 @@
+{
+    "type": "block",
+    "description": {
+        "identifier": "sapling",
+        "type_id": 6
+    },
+    "components": {
+        "destructible_by_mining": {
+            "seconds_to_destroy": 0
+        }
+    }
+}

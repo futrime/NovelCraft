@@ -1,0 +1,22 @@
+{
+    "type":"recipe",
+    "recipe":{
+        "type":"crafting",
+        "ingredients":[
+            null,
+            null,
+            null,
+            5,
+            null,
+            null,
+            5,
+            null,
+            null
+        ],
+        "result":[{
+            "item_type_id":17,
+            "count":4
+        }],
+        "is_shapeless":false
+    }
+}

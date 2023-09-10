@@ -1,0 +1,103 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "bound_to": {
+            "type": "integer",
+            "const": 1
+        },
+        "type": {
+            "type": "integer",
+            "const": 402
+        },
+        "creation_list": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "entity_type_id": {
+                        "type": "integer"
+                    },
+                    "health": {
+                        "oneOf": [
+                            {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "item_type_id": {
+                        "oneOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "orientation": {
+                        "type": "object",
+                        "properties": {
+                            "yaw": {
+                                "type": "number",
+                                "exclusiveMininum": -180,
+                                "maximum": 360
+                            },
+                            "pitch": {
+                                "type": "number",
+                                "mininum": -90,
+                                "maximum": 90
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                            "yaw",
+                            "pitch"
+                        ]
+                    },
+                    "position": {
+                        "type": "object",
+                        "properties": {
+                            "x": {
+                                "type": "number"
+                            },
+                            "y": {
+                                "type": "number"
+                            },
+                            "z": {
+                                "type": "number"
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                            "x",
+                            "y",
+                            "z"
+                        ]
+                    },
+                    "unique_id": {
+                        "type": "integer"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "entity_type_id",
+                    "health",
+                    "item_type_id",
+                    "orientation",
+                    "position",
+                    "unique_id"
+                ]
+            }
+        }
+    },
+    "required": [
+        "bound_to",
+        "type",
+        "creation_list"
+    ]
+}

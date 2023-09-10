@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "novelcraft.sdk"
+version = "0.2.0"
+description = "A Python library for communicating with NovelCraft Servers and accessing NovelCraft game data"
+authors = ["NovelCraft"]
+license = "Unlicense"
+readme = "README.md"
+packages = [
+    { include = "novelcraft", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+termcolor = "^2.2.0"
+jsonschema = "^4.17.3"
+websockets = "^10.4"
+
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2"
+mkdocstrings = {extras = ["python"], version = "^0.21.2"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

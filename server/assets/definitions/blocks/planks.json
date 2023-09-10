@@ -1,0 +1,14 @@
+{
+    "type": "block",
+    "description": {
+        "identifier": "planks",
+        "type_id": 5
+    },
+    "components": {
+        "collision_box": {},
+        "destructible_by_mining": {
+            "seconds_to_destroy": 3
+        },
+        "friction": 0.4
+    }
+}

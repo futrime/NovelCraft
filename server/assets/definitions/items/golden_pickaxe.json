@@ -1,0 +1,40 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "golden_pickaxe",
+        "type_id": 30
+    },
+    "components": {
+        "digger": {
+            "destroy_speeds": [
+                {
+                    "block_type_id": 1,
+                    "speed_multiplier": 37.50
+                },
+                {
+                    "block_type_id": 4,
+                    "speed_multiplier": 40.00
+                },
+                {
+                    "block_type_id": 14,
+                    "speed_multiplier": 12.00
+                },
+                {
+                    "block_type_id": 15,
+                    "speed_multiplier": 12.00
+                },
+                {
+                    "block_type_id": 16,
+                    "speed_multiplier": 37.50
+                },
+                {
+                    "block_type_id": 56,
+                    "speed_multiplier": 12.00
+                }
+            ]
+        },
+        "weapon": {
+            "damage": 2
+        }
+    }
+}

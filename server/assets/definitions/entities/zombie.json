@@ -1,0 +1,28 @@
+{
+    "type": "entity",
+    "description": {
+        "identifier": "zombie",
+        "type_id": 2
+    },
+    "components": {
+        "attack": {
+            "damage": 1
+        },
+        "collision_box": {
+            "width": 0.6,
+            "height": 1.8,
+            "eye_height": 1.62
+        },
+        "health": {
+            "value": 20,
+            "max": 20
+        },
+        "movement": {
+            "value": 8
+        },
+        "movement.jump": {
+            "value": 5.0
+        },
+        "physics": {}
+    }
+}

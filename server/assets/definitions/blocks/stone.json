@@ -1,0 +1,14 @@
+{
+    "type": "block",
+    "description": {
+        "identifier": "stone",
+        "type_id": 1
+    },
+    "components": {
+        "collision_box": {},
+        "destructible_by_mining": {
+            "seconds_to_destroy": 7.5
+        },
+        "friction": 0.4
+    }
+}

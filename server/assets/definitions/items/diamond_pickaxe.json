@@ -1,0 +1,40 @@
+{
+    "type": "item",
+    "description": {
+        "identifier": "diamond_pickaxe",
+        "type_id": 34
+    },
+    "components": {
+        "digger": {
+            "destroy_speeds": [
+                {
+                    "block_type_id": 1,
+                    "speed_multiplier": 20.00
+                },
+                {
+                    "block_type_id": 4,
+                    "speed_multiplier": 25.00
+                },
+                {
+                    "block_type_id": 14,
+                    "speed_multiplier": 25.00
+                },
+                {
+                    "block_type_id": 15,
+                    "speed_multiplier": 25.00
+                },
+                {
+                    "block_type_id": 16,
+                    "speed_multiplier": 25.00
+                },
+                {
+                    "block_type_id": 56,
+                    "speed_multiplier": 25.00
+                }
+            ]
+        },
+        "weapon": {
+            "damage": 5
+        }
+    }
+}

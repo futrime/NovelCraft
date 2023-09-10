@@ -1,0 +1,16 @@
+{
+    "format_version": 1,
+    "tooth": "github.com/novelcraft/agenttemplate-python",
+    "version": "0.2.1",
+    "information": {
+        "name": "NovelCraft Agent Template for Python",
+        "description": "A template for creating a NovelCraft agent in Python",
+        "author": "NovelCraft"
+    },
+    "placement": [
+        {
+            "source": "*",
+            "destination": "*"
+        }
+    ]
+}

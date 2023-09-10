@@ -1,0 +1,28 @@
+site_name: NovelCraft SDK
+
+nav:
+  - Overview: index.md
+  - SDK: sdk.md
+  - IAgent: agent.md
+  - IBlock: block.md
+  - IBlockSource: block_source.md
+  - IEntity: entity.md
+  - IEntitySource: entity_source.md
+  - IInventory: inventory.md
+  - IItemStack: item_stack.md
+  - ILogger: logger.md
+  - Orientation: orientation.md
+  - Position: position.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths:
+            - src/novelcraft/sdk
+          options:
+            show_source: false
+            show_root_toc_entry: false
+
+theme: readthedocs
